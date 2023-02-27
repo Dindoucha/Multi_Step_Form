@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu';
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+main {
+    position: relative;
+}
+picture {
+    position: absolute;
+    z-index: -1;
+}
+.buttons {
+    padding: 2rem;
+    text-align: center;
+}
+.buttons button {
+    margin: .5rem;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    outline: none;
+    border: 1px solid hsl(206, 94%, 87%);
+    background: none;
+    color: hsl(206, 94%, 87%);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+button.active,.buttons button:hover {
+    background-color:hsl(206, 94%, 87%) ;
+    color: hsl(213, 96%, 18%);
+}
