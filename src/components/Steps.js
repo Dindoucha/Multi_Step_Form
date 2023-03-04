@@ -3,49 +3,65 @@ import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import StepFour from './StepFour'
 import { useState } from 'react';
-
+import styles from '../cssModules/steps.module.css'
 function Steps(){
   const [data,setData] = useState({
     // Step One
     name : "",
     email : "",
     number : "",
-    // Step Two
-    plan : "",
-    monthly:false,
-    // Step Three
-    onlineService : false,
-    largeStorage : false,
-    customProfile : false,
   });
   const handleData = (e) => {
     const value = e.target.value;
-    setData({...data,[e.target.name]:value});
+    setData({...data,[e.target.name]:value})
   }
+  const [plan,setPlan] = useState({
+    type : "arcade",
+    monthly : true
+  })
+  const [required,setRequired] = useState({
+    name : false,
+    email : false,
+    number : false
+  });
+
   const [activeTab,setActiveTab] = useState(1);
   const prevTab = () => {
-    setActiveTab(activeTab - 1)
+    setActiveTab(activeTab - 1);
   }
   const nextTab = () => {
-    setActiveTab(activeTab + 1)
+    verifyInput() && setActiveTab(activeTab + 1);
   }
   const handleTabClick = (tab) => {
-    setActiveTab(tab);
+    verifyInput() && setActiveTab(tab);
   };
-
+  const verifyInput = () => {
+    setRequired({
+      name: data.name === "",
+      email: data.email === "",
+      number: data.number === "",
+    });
+    return !(data.name === "" || data.email === "" || data.number === "" );
+  }
   return (
     <>
-      <div className='buttons'>
-        <button className={activeTab === 1 ? 'active' : ''} onClick={()=>handleTabClick(1)}>1</button>
-        <button className={activeTab === 2 ? 'active' : ''} onClick={()=>handleTabClick(2)}>2</button>
-        <button className={activeTab === 3 ? 'active' : ''} onClick={()=>handleTabClick(3)}>3</button>
-        <button className={activeTab === 4 ? 'active' : ''} onClick={()=>handleTabClick(4)}>4</button>
+      <div className={styles.navButtons}>
+      {[1, 2, 3, 4].map((num) => (
+        <button key={num} className={`${styles.navButton} ${activeTab === num ? styles.active : ""}`} onClick={() => handleTabClick(num)}>
+          {num}
+        </button>
+      ))}
       </div>
       <div className='content'>
-        {activeTab === 1 && <StepOne handleData = {handleData} data={data} nextTab = {nextTab} />}
-        {activeTab === 2 && <StepTwo handleData = {handleData} data={data} nextTab = {nextTab} prevTab = {prevTab}/>}
-        {activeTab === 3 && <StepThree handleData = {handleData} data={data} nextTab = {nextTab} prevTab = {prevTab}/>}
-        {activeTab === 4 && <StepFour handleData = {handleData} data={data} prevTab = {prevTab}/>}
+        {activeTab === 1 && <StepOne handleData = {handleData} required={required} data={data} />}
+        {activeTab === 2 && <StepTwo setPlan = {setPlan} plan={plan} />}
+        {activeTab === 3 && <StepThree handleData = {handleData} data={data} />}
+        {activeTab === 4 && <StepFour handleData = {handleData} data={data} />}
+      </div>
+      <div className={styles.footerButtons}>
+        {activeTab > 1 && <button className={styles.backButton} onClick={() => prevTab()}>Go Back</button>}
+        {activeTab < 4 && <button className={styles.nextButton} onClick={() => nextTab()}>Next Step</button>}
+        {activeTab === 4 && <button className={styles.confirmButton}>Confirm</button>}
       </div>
     </>
   )

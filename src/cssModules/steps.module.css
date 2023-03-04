@@ -1,0 +1,65 @@
+/* nav Buttons CSS Start */
+.navButtons {
+    padding: 2rem;
+    text-align: center;
+}
+.navButton {
+    margin-inline: .5rem;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid hsl(0, 0%, 100%);
+    background: none;
+    color: hsl(0, 0%, 100%);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.navButton.active,.navButton:hover {
+    background-color:hsl(206, 94%, 87%) ;
+    color: hsl(213, 96%, 18%);
+    border-color:hsl(206, 94%, 87%) ;
+}
+/* nav Buttons CSS End */
+/* footer Buttons CSS Start */
+.footerButtons {
+    background-color: hsl(0, 0%, 100%);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+}
+.backButton {
+    cursor: pointer;
+    float: left;
+    padding: 1rem;
+    border: none;
+    background: none;
+    font-weight: 700;
+    color: hsl(231, 11%, 69%);
+}
+.nextButton,.confirmButton {
+    cursor: pointer;
+    float: right;
+    padding: 1rem;
+    border: none;
+    border-radius: .25rem;
+    font-weight: 700;
+    color: hsl(0, 0%, 100%);
+}
+.nextButton {
+    background-color: hsl(213, 96%, 18%);
+}
+.nextButton:hover{
+    background-color: hsl(213, 96%, 38%);
+}
+.confirmButton {
+    background-color: hsl(243, 100%, 62%);
+    padding-inline: 1.5rem;
+}
+.confirmButton:hover {
+    background-color: hsl(243, 100%, 72%);
+}
+/* footer Buttons CSS End */
+

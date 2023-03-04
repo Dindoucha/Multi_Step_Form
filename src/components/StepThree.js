@@ -1,8 +1,8 @@
-function StepThree({nextTab,prevTab}){
+function StepThree(){
     return(
         <>
             <h1>Pick add-ons</h1>
-            <p>Add-ons help enhance your gaming experience.</p>
+            <p className="paragraph">Add-ons help enhance your gaming experience.</p>
             Online service
             Access to multiplayer games
             +$1/mo
@@ -14,8 +14,6 @@ function StepThree({nextTab,prevTab}){
             Customizable Profile
             Custom theme on your profile
             +$2/mo
-            <button onClick={prevTab}>Go Back</button>
-            <button onClick={nextTab}>Next Step</button>
         </>
     )
 }

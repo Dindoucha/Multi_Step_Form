@@ -6,7 +6,7 @@ function App() {
   return (
     <main>
       <picture>
-        <source srcSet='./assets/images/bg-sidebar-desktop.svg' media='(min-width:375px)' alt="colorful background" />
+        <source srcSet='./assets/images/bg-sidebar-desktop.svg' media='(min-width:376px)' alt="colorful background" />
         <img src='./assets/images/bg-sidebar-mobile.svg' alt="colorful background" />
       </picture>
       <Steps />
