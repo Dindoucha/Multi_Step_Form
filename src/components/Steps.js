@@ -5,11 +5,16 @@ import StepFour from './StepFour'
 import { useState } from 'react';
 import styles from '../cssModules/steps.module.css'
 function Steps(){
+   // Step One
   const [data,setData] = useState({
-    // Step One
     name : "",
     email : "",
     number : "",
+  });
+  const [required,setRequired] = useState({
+    name : false,
+    email : false,
+    number : false
   });
   const handleData = (e) => {
     const value = e.target.value;
@@ -19,11 +24,7 @@ function Steps(){
     type : "arcade",
     monthly : true
   })
-  const [required,setRequired] = useState({
-    name : false,
-    email : false,
-    number : false
-  });
+  const [adds_on,setAdds_on] = useState({})
 
   const [activeTab,setActiveTab] = useState(1);
   const prevTab = () => {
